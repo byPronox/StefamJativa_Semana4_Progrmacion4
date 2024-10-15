@@ -1,4 +1,9 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using StefamJativa_Semana4_Progrmacion4.Data;
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<StefamJativa_Semana4_Progrmacion4Context>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("StefamJativa_Semana4_Progrmacion4Context") ?? throw new InvalidOperationException("Connection string 'StefamJativa_Semana4_Progrmacion4Context' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
